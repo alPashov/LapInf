@@ -41,6 +41,8 @@ def scraping_html_info(htmls):
         category_list.append(products)
     return category_list
 
+    #Debug functions
+
 def csv_export(main_list):
     with open("mainList.csv", "w", newline="") as file:
         writer = csv.writer(file)
@@ -51,3 +53,13 @@ def pandas_output(main_list):
     DataFrame = pd.DataFrame(main_list)
     print(DataFrame)
 
+    #Main function
+
+def main():
+    htmls = get_html_list()
+    main_list = scraping_html_info(htmls)
+    csv_export(main_list)
+    pandas_output(main_list)
+
+if __name__ == "__main__":
+    main()
