@@ -40,3 +40,10 @@ def scraping_html_info(htmls):
             products.append(product_attributes)
         category_list.append(products)
     return category_list
+
+def csv_export(category_list):
+    with open("mainList.csv", "w", newline="") as file:
+        writer = csv.writer(file)
+        for product in category_list:
+            writer.writerow([product])
+
