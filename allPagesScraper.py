@@ -22,3 +22,21 @@ def get_html_list():
             page.wait_for_selector("div#card_grid")
             htmls.append(page.inner_html("div#card_grid"))
     return htmls
+
+def scraping_html_info(htmls):
+    category_list = []
+    for html in htmls:
+        soup_main_scraper = bs(html, "html.parser")
+        card_selector_scraper = soup_main_scraper.select("div.card-v2-wrapper")
+        products = []
+        for card in card_selector_scraper:
+            title = card.select_one("div.pad-hrz-xs h2.card-v2-title-wrapper a").text.strip()
+            price = card.select_one("div.card-v2-content div.card-v2-pricing p.product-new-price").text.strip()
+            link_product = card.select_one("div.card-v2-info a").attrs["href"]
+            image_product = card.select_one("div.card-v2-info div.card-v2-thumb-inner img.w-100").attrs['src']
+            unavaibility = card.select_one("div.card-v2-wrapper div.card-v2-info div.pad-hrz-xs div.card-estimate-placeholder div.text-availability-unavailable")
+            out_of_stock = card.select_one("div.card-v2-wrapper div.card-v2-info div.pad-hrz-xs div.card-estimate-placeholder div.text-availability-out_of_stock")
+            product_attributes  = (title, price, link_product, image_product, unavaibility, out_of_stock)
+            products.append(product_attributes)
+        category_list.append(products)
+    return category_list
