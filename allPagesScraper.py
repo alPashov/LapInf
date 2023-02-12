@@ -61,5 +61,10 @@ def main():
     csv_export(main_list)
     pandas_output(main_list)
 
+def flask_list_return():
+    htmls = get_html_list()
+    main_list = scraping_html_info(htmls)
+    return main_list
+
 if __name__ == "__main__":
     main()
