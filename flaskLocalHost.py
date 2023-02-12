@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def index_page():
-    return str(list)
+    return render_template("index.html", list = list)
 
 if __name__ == "__main__":
     webbrowser.open_new_tab("localhost:5050")

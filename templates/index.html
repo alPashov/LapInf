@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="bg-BG">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <title>LapInf</title>
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/index_style.css') }}">
+    </head>
+    <body>
+        <header>
+            <br id="StartForHomeButton">
+            <br>
+            <h1>LapInf</h1>
+        </header>
+        
+        <article>
+            <h2 id="GamingListStart">Gaming Category</h2>
+            {%for product_attr in list[0]%}
+            <div class="box">
+                <!-- <img src="{{product_attr[3]}}"> -->
+                <a href="{{product_attr[2]}}">{{product_attr[0]}}</a>
+                <p>{{product_attr[1]}}</p>
+                {%if product_attr[4] or product_attr[5]%}
+                <div class="UnAvaible"><p>Не е в наличност</p></div>
+                {%else%}
+                <div class="inStock"><p>В наличност</p></div>
+                {%endif%}
+            </div>
+            </div>
+            {%endfor%}
+            <h2 id="HomeListStart">Everyday/Home Category</h2>
+            {%for product_attr in list[1]%}
+            <div class="box">
+                <!-- <img src="{{product_attr[3]}}"> -->
+                <a href="{{product_attr[2]}}">{{product_attr[0]}}</a>
+                <p>{{product_attr[1]}}</p>
+                {%if product_attr[4] or product_attr[5]%}
+                <div class="UnAvaible"><p>Не е в наличност</p></div>
+                {%else%}
+                <div class="inStock"><p>В наличност</p></div>
+                {%endif%}
+            </div>
+            </div>
+            {%endfor%}
+            <h2 id="OfficeListStart">Office Category</h2>
+            {%for product_attr in list[2]%}
+            <div class="box">
+                <!-- <img src="{{product_attr[3]}}"> -->
+                <a href="{{product_attr[2]}}">{{product_attr[0]}}</a>
+                <p>{{product_attr[1]}}</p>
+                {%if product_attr[4] or product_attr[5]%}
+                <div class="UnAvaible"><p>Не е в наличност</p></div>
+                {%else%}
+                <div class="inStock"><p>В наличност</p></div>
+                {%endif%}
+            </div>
+            </div>
+            {%endfor%}
+        </article>
+        <nav>
+            <div class="menu">
+                <span><a href="#StartForHomeButton" class="links_in_menu">Home</a></span>
+                <span><a href="#GamingListStart" class="links_in_menu">Gaming Laptops</a></span>
+                <span><a href="#HomeListStart" class="links_in_menu">Everyday/Home Laptops</a></span>   
+                <span><a href="#OfficeListStart" class="links_in_menu">Office Laptops</a></span>   
+            </div>
+        </nav>
+    </body>
+</html>

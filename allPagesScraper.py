@@ -33,10 +33,15 @@ def scraping_html_info(htmls):
             title = card.select_one("div.pad-hrz-xs h2.card-v2-title-wrapper a").text.strip()
             price = card.select_one("div.card-v2-content div.card-v2-pricing p.product-new-price").text.strip()
             link_product = card.select_one("div.card-v2-info a").attrs["href"]
-            image_product = card.select_one("div.card-v2-info div.card-v2-thumb-inner img.w-100").attrs['src']
+            # image_product = card.select_one("div.card-v2-info div.card-v2-thumb-inner img.w-100").attrs['src']
             unavaibility = card.select_one("div.card-v2-wrapper div.card-v2-info div.pad-hrz-xs div.card-estimate-placeholder div.text-availability-unavailable")
             out_of_stock = card.select_one("div.card-v2-wrapper div.card-v2-info div.pad-hrz-xs div.card-estimate-placeholder div.text-availability-out_of_stock")
-            product_attributes  = (title, price, link_product, image_product, unavaibility, out_of_stock)
+            product_attributes  = (title, 
+                                   price, 
+                                   link_product, 
+                                #    image_product, 
+                                   unavaibility, 
+                                   out_of_stock)
             products.append(product_attributes)
         category_list.append(products)
     return category_list
