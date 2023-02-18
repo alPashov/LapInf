@@ -11,5 +11,5 @@ def index_page():
     return render_template("index.html", list = list)
 
 if __name__ == "__main__":
-    webbrowser.open_new_tab("localhost:5050")
-    app.run(host="0.0.0.0", port=5050)
+    webbrowser.open_new_tab("localhost:8080")
+    app.run(host="0.0.0.0", port=8080)
